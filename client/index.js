@@ -5,6 +5,10 @@ import { browserHistory, applyRouterMiddleware, Router } from 'react-router';
 import useRelay from 'react-router-relay';
 
 import '../node_modules/react-mdl/extra/material.js';
+//import '../node_modules/jquery';
+import '../semantic/dist/semantic.min.css';
+import '../semantic/dist/semantic.min.js';
+
 import Route from './routes/Route';
 
 const rootNode = document.createElement('div');

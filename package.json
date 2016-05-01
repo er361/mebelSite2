@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Relay Starter Kit - Integrated with Relay, GraphQL, Express, ES6/ES7, JSX, Webpack, Babel, Material Design Lite, and PostCSS",
   "scripts": {
-    "start": "nodemon --watch 'server/data/**/*.js' --exec 'npm run update && babel-node server/index.js'",
+    "start": "nodemon --watch 'server/data/**/*.js' --exec   babel-node server/index.js",
     "update": "babel-node server/utils/updateSchema.js",
     "deploy": "NODE_ENV=production webpack --config webpack.production.config.js && npm run update && NODE_ENV=production babel-node server/index.js",
     "lint": "eslint --ignore-path .gitignore client server"
@@ -76,6 +76,7 @@
     "react-relay": "^0.8.1",
     "react-router": "^2.4.0",
     "react-router-relay": "^0.13.1",
+    "semantic-ui": "^2.1.8",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",

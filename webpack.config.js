@@ -13,30 +13,40 @@ module.exports = {
       'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/only-dev-server'
     ],
-    vendor: ['react', 'react-dom', 'react-mdl', 'react-relay', 'react-router', 'react-router-relay']
+    vendor: ['react','react-dom', 'react-relay', 'react-router', 'react-router-relay']
   },
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].js'
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   module: {
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/
     }, {
+      test: /\.css$/,
+      loader: "style-loader!css-loader!postcss-loader"
+    },{
       test: /\.scss$/,
       loaders: ['style-loader', 'css-loader', 'postcss-loader']
     }, {
       test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
       loader: 'url-loader?limit=10000&name=assets/[hash].[ext]'
+    },{
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: "file-loader"
     }]
   },
   postcss: function() {
     return [precss, autoprefixer];
   },
   plugins: [
+    new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -48,4 +58,3 @@ module.exports = {
     })
   ]
 };
-
