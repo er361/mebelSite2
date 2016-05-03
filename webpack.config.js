@@ -19,7 +19,7 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[name].js'
   },
-  devtool: 'source-map',
+  devtool: 'eval',
   module: {
     loaders: [{
       test: /\.jsx?$/,
