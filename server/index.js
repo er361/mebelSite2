@@ -8,16 +8,28 @@ import historyApiFallback from 'connect-history-api-fallback';
 import chalk from 'chalk';
 import webpackConfig from '../webpack.config';
 import config from './config/environment';
-import schema from './data/schema';
+
+//database packages
+import graffiti from '@risingstack/graffiti';
+import { getSchema } from '@risingstack/graffiti-mongoose';
+import mongoose from 'mongoose';
+import { json } from 'body-parser';
+
+//mongoose models
+import blogPost from './models/blog-post.js';
+import comment from './models/comment.js';
+
 
 if (config.env === 'development') {
+  //connect database
+  mongoose.connect(`mongodb://${config.development.mongodb}`);
+
   // Launch GraphQL
   const graphql = express();
-  graphql.use('/', graphQLHTTP({
-    graphiql: true,
-    pretty: true,
-    schema
-  }));
+  graphql.use(json());
+  graphql.use(graffiti.express({
+  schema: getSchema([blogPost, comment])
+}));
   graphql.listen(config.graphql.port, () => console.log(chalk.green(`GraphQL is listening on port ${config.graphql.port}`)));
 
   // Launch Relay by using webpack.config.js
