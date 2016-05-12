@@ -19,7 +19,7 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[name].js'
   },
-  devtool: 'eval',
+  devtool: 'cheap-module-eval-source-map',
   module: {
     loaders: [{
       test: /\.jsx?$/,
@@ -43,6 +43,7 @@ module.exports = {
     return [precss, autoprefixer];
   },
   plugins: [
+    new webpack.EnvironmentPlugin('NODE_ENV'),
     new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

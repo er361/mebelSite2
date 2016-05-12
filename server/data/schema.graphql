@@ -1,0 +1,197 @@
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
+
+input addCategoryInput {
+  title: String
+  clientMutationId: String!
+}
+
+type addCategoryPayload {
+  viewer: Viewer
+  changedCategoryEdge: changedCategoryEdge
+  clientMutationId: String!
+}
+
+input addMebelInput {
+  categoryId: ID
+  title: String
+  img: String
+  price: String
+  clientMutationId: String!
+}
+
+type addMebelPayload {
+  viewer: Viewer
+  changedMebelEdge: changedMebelEdge
+  clientMutationId: String!
+}
+
+type Category implements Node {
+  title: String
+  _id: ID
+  id: ID!
+}
+
+type CategoryConnection {
+  pageInfo: PageInfo!
+  edges: [CategoryEdge]
+  count: Float
+}
+
+type CategoryEdge {
+  node: Category
+  cursor: String!
+}
+
+type changedCategoryEdge {
+  node: changedCategoryNode
+  cursor: String!
+}
+
+type changedCategoryNode {
+  title: String
+  _id: ID
+  id: ID!
+}
+
+type changedMebelEdge {
+  node: changedMebelNode
+  cursor: String!
+}
+
+type changedMebelNode {
+  categoryId: ID
+  title: String
+  img: String
+  price: String
+  _id: ID
+  id: ID!
+}
+
+input deleteCategoryInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type deleteCategoryPayload {
+  viewer: Viewer
+  ok: Boolean
+  id: ID!
+  clientMutationId: String!
+}
+
+input deleteMebelInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type deleteMebelPayload {
+  viewer: Viewer
+  ok: Boolean
+  id: ID!
+  clientMutationId: String!
+}
+
+type Mebel implements Node {
+  categoryId: ID
+  title: String
+  img: String
+  price: String
+  _id: ID
+  id: ID!
+}
+
+type MebelConnection {
+  pageInfo: PageInfo!
+  edges: [MebelEdge]
+  count: Float
+}
+
+type MebelEdge {
+  node: Mebel
+  cursor: String!
+}
+
+interface Node {
+  id: ID!
+}
+
+enum orderByCategory {
+  TITLE_ASC
+  TITLE_DESC
+  _ID_ASC
+  _ID_DESC
+}
+
+enum orderByMebel {
+  CATEGORYID_ASC
+  CATEGORYID_DESC
+  TITLE_ASC
+  TITLE_DESC
+  IMG_ASC
+  IMG_DESC
+  PRICE_ASC
+  PRICE_DESC
+  _ID_ASC
+  _ID_DESC
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type RootMutation {
+  addMebel(input: addMebelInput!): addMebelPayload
+  updateMebel(input: updateMebelInput!): updateMebelPayload
+  deleteMebel(input: deleteMebelInput!): deleteMebelPayload
+  addCategory(input: addCategoryInput!): addCategoryPayload
+  updateCategory(input: updateCategoryInput!): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput!): deleteCategoryPayload
+}
+
+type RootQuery {
+  viewer: Viewer
+  node(id: ID!): Node
+  mebel(id: ID!): Mebel
+  mebels(id: [ID], ids: [ID], orderBy: orderByMebel, categoryId: ID, title: String, img: String, price: String, _id: ID): [Mebel]
+  category(id: ID!): Category
+  categories(id: [ID], ids: [ID], orderBy: orderByCategory, title: String, _id: ID): [Category]
+}
+
+input updateCategoryInput {
+  title: String
+  id: ID!
+  clientMutationId: String!
+}
+
+type updateCategoryPayload {
+  changedCategory: Category
+  clientMutationId: String!
+}
+
+input updateMebelInput {
+  categoryId: ID
+  title: String
+  img: String
+  price: String
+  id: ID!
+  clientMutationId: String!
+}
+
+type updateMebelPayload {
+  changedMebel: Mebel
+  clientMutationId: String!
+}
+
+type Viewer implements Node {
+  id: ID!
+  mebels(after: String, first: Int, before: String, last: Int, orderBy: orderByMebel, categoryId: ID, title: String, img: String, price: String, _id: ID): MebelConnection
+  mebel(id: ID!): Mebel
+  categories(after: String, first: Int, before: String, last: Int, orderBy: orderByCategory, title: String, _id: ID): CategoryConnection
+  category(id: ID!): Category
+}

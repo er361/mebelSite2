@@ -14,6 +14,10 @@ const rootNode = document.createElement('div');
 document.body.appendChild(rootNode);
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={Route} render={applyRouterMiddleware(useRelay)} environment={Relay.Store} />,
+<Router
+  history={browserHistory}
+  render={applyRouterMiddleware(useRelay)}
+  environment={Relay.Store}
+  routes={Route} />,
   rootNode
 );
