@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Relay from 'react-relay';
 import AddCategoryMutation from '../../../mutations/admin/category/AddCategoryMutation.js';
+import CategoryListComponent from './CategoryListComponent.js';
 
 export default class Category extends Component {
   constructor(props){
@@ -36,13 +37,20 @@ export default class Category extends Component {
   }
   render(){
     return(
-      <div className="ui action input">
-        <input
-          type="text"
-          value={this.state.title}
-          onChange={this.handleChange.bind(this)}
-          placeholder="Название категории"/>
-        <button className="ui green button" onClick={this.handleClick.bind(this)}>Создать</button>
+      <div className="ui grid">
+        <div className="four wide column">
+          <div className="ui action input">
+            <input
+              type="text"
+              value={this.state.title}
+              onChange={this.handleChange.bind(this)}
+              placeholder="Название категории"/>
+            <button className="ui green button" onClick={this.handleClick.bind(this)}>Создать</button>
+          </div>
+        </div>
+        <div className="three wide column">
+          <CategoryListComponent />
+        </div>
       </div>
     )
   }
