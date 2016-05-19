@@ -1,16 +1,27 @@
 import React from 'react';
+import CategoryUnit from './CategoryUnit.jsx';
 
 export default React.createClass({
+  componentWillReceiveProps(){
+    if(process.env.NODE_ENV == "development")
+      console.log(this.props);
+  },
+  handleEdit(){
+
+  },
+  handleDelete(id){
+    if(process.env.NODE_ENV == "development")
+      console.log('delete');
+
+    this.props.onDelete(id);
+  },
   render(){
+    let categories = this.props.categories;
     return(
       <div className="ui middle aligned divided list">
-        <div className="item">
-          <div className="right floated content">
-            <div className="ui tiny blue basic button">Edit</div>
-            <div className="ui tiny red basic button">Delete</div>
-          </div>
-          <div className="bottom aligned content">content</div>
-        </div>
+        {categories.edges.map(edge =>
+          <CategoryUnit viewer={this.props.viewer} key={edge.node.id} category={edge.node} />
+          )}
       </div>
     )
   }

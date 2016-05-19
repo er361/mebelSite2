@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import Relay from 'react-relay';
 import AddCategoryMutation from '../../../mutations/admin/category/AddCategoryMutation.js';
-import CategoryListComponent from './CategoryListComponent.js';
+import DeleteCategoryMutation from '../../../mutations/admin/category/DeleteCategoryMutation.js';
+import CategoryListContainer from './CategoryListContainer.js';
 
 export default class Category extends Component {
   constructor(props){
     super(props);
-    console.log(props);
+    //debug
+    if(process.env.NODE_ENV == 'development')
+      console.log(props);
+
     this.state = {
       title: ''
     };
@@ -15,6 +19,10 @@ export default class Category extends Component {
     this.setState({
       title: e.target.value
     });
+  }
+  componentWillReceiveProps(){
+    if(process.env.NODE_ENV == "development")
+      console.log(this.props);  
   }
   handleClick(){
     //debug
@@ -48,8 +56,8 @@ export default class Category extends Component {
             <button className="ui green button" onClick={this.handleClick.bind(this)}>Создать</button>
           </div>
         </div>
-        <div className="three wide column">
-          <CategoryListComponent />
+        <div className="five wide column">
+          <CategoryListContainer viewer={this.props.viewer}  categories={this.props.viewer.categories} />
         </div>
       </div>
     )
