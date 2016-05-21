@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryUnit from './CategoryUnit.jsx';
+import CategoryUnit from './CategoryUnit/CategoryUnit.jsx';
 
 export default React.createClass({
   componentWillReceiveProps(){
@@ -20,7 +20,7 @@ export default React.createClass({
     return(
       <div className="ui middle aligned divided list">
         {categories.edges.map(edge =>
-          <CategoryUnit viewer={this.props.viewer} key={edge.node.id} category={edge.node} />
+          <CategoryUnit  viewer={this.props.viewer} key={edge.node.id} category={edge.node} />
           )}
       </div>
     )

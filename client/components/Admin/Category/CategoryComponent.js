@@ -22,7 +22,7 @@ export default class Category extends Component {
   }
   componentWillReceiveProps(){
     if(process.env.NODE_ENV == "development")
-      console.log(this.props);  
+      console.log(this.props);
   }
   handleClick(){
     //debug
@@ -43,12 +43,16 @@ export default class Category extends Component {
       title: ''
     });
   }
+  handleKeyDown(){
+    console.log('keydown');
+  }
   render(){
     return(
       <div className="ui grid">
         <div className="four wide column">
           <div className="ui action input">
             <input
+              onKeyDown={this.handleKeyDown}
               type="text"
               value={this.state.title}
               onChange={this.handleChange.bind(this)}
