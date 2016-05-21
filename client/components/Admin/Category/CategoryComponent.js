@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import Relay from 'react-relay';
+import ReactDOM from 'react-dom';
 import AddCategoryMutation from '../../../mutations/admin/category/AddCategoryMutation.js';
 import DeleteCategoryMutation from '../../../mutations/admin/category/DeleteCategoryMutation.js';
 import CategoryListContainer from './CategoryListContainer.js';
+
+const ENTER_KEY_CODE = 13;
+const ESC_KEY_CODE = 27;
 
 export default class Category extends Component {
   constructor(props){
@@ -15,7 +19,7 @@ export default class Category extends Component {
       title: ''
     };
   }
-  handleChange(e){
+  handleChange = (e) => {
     this.setState({
       title: e.target.value
     });
@@ -24,7 +28,7 @@ export default class Category extends Component {
     if(process.env.NODE_ENV == "development")
       console.log(this.props);
   }
-  handleClick(){
+  handleAddCategoryClick = () => {
     //debug
     if(process.env.NODE_ENV == 'development')
       console.log({text:this.state.title})
@@ -43,8 +47,15 @@ export default class Category extends Component {
       title: ''
     });
   }
-  handleKeyDown(){
-    console.log('keydown');
+  handleKeyDown = (e) => {
+    if(e.keyCode == ESC_KEY_CODE)
+      this.handleBlur();
+      else if (e.keyCode == ENTER_KEY_CODE) {
+        this.handleAddCategoryClick();
+      }
+  }
+  handleBlur(){
+    this.refs.categoryAdd.blur();
   }
   render(){
     return(
@@ -52,12 +63,13 @@ export default class Category extends Component {
         <div className="four wide column">
           <div className="ui action input">
             <input
-              onKeyDown={this.handleKeyDown}
+              ref='categoryAdd'
               type="text"
+              onKeyDown={this.handleKeyDown}
               value={this.state.title}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleChange}
               placeholder="Название категории"/>
-            <button className="ui green button" onClick={this.handleClick.bind(this)}>Создать</button>
+            <button className="ui green button" onClick={this.handleAddCategoryClick}>Создать</button>
           </div>
         </div>
         <div className="five wide column">
