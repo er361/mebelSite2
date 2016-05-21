@@ -18,7 +18,7 @@ export default React.createClass({
   render(){
     let categories = this.props.categories;
     return(
-      <div className="ui middle aligned divided list">
+      <div className="ui  middle aligned list">
         {categories.edges.map(edge =>
           <CategoryUnit  viewer={this.props.viewer} key={edge.node.id} category={edge.node} />
           )}

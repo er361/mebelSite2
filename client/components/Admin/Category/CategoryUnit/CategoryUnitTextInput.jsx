@@ -9,7 +9,7 @@ export default class TodoTextInput extends React.Component {
     text : this.props.initialValue || ''
   }
   componentDidMount() {
-    ReactDom.findDOMNode(this).focus();
+    this.refs.categoryEditInput.focus();
   }
   handleBlur = () => {
     if (this.props.saveOnBlur) {
@@ -44,6 +44,7 @@ export default class TodoTextInput extends React.Component {
     return (
       <div className="ui input">
         <input
+          ref='categoryEditInput'
           value={this.state.text}
           onBlur={this.handleBlur}
           onChange={this.handleChange}

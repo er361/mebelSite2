@@ -73,7 +73,13 @@ export default class Category extends Component {
           </div>
         </div>
         <div className="five wide column">
-          <CategoryListContainer viewer={this.props.viewer}  categories={this.props.viewer.categories} />
+          <div className="ui violet segment">
+            <h2 className="ui right floated header">
+              Список категории
+            </h2>
+            <div className="ui clearing divider"></div>
+              <CategoryListContainer viewer={this.props.viewer}  categories={this.props.viewer.categories} />
+          </div>
         </div>
       </div>
     )
