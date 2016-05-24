@@ -11,7 +11,7 @@ var mebelSchema = new mongoose.Schema({
   },
   img: {
     type: String,
-    required: true
+    //required: true
   },
   price: {
     type: String,
