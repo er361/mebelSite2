@@ -4,6 +4,7 @@ import { IndexRoute, Route, Redirect, Router } from 'react-router';
 //queries
 import ViewerQuery from '../queries/ViewerQuery';
 import CategoryListQuery from '../queries/CategoryListQuery.js';
+import Category from '../queries/Category.js';
 
 //root component (wrapper)
 import rootApp from '../components/rootApp.js';
@@ -23,7 +24,7 @@ export default (
     <Route path='/' component={rootApp}>
       <IndexRoute component={AppComponent} />
       <Route path='admin' component={AdminContainer} queries={ViewerQuery} />
-      <Route component={AdminComponent} >
+      <Route component={AdminComponent}>
         <Route path='mebel'  component={Mebel} queries={ViewerQuery} />
         <Route path='category' component={CategoryContainer} queries={ViewerQuery} />
       </Route>

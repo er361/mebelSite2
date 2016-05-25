@@ -19,7 +19,7 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[name].js'
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
   module: {
     loaders: [{
       test: /\.jsx?$/,

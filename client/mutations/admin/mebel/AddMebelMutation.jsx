@@ -3,9 +3,8 @@
  export default class AddMebelMutation extends Relay.Mutation {
    static fragments = {
      viewer: () => Relay.QL `fragment on Viewer {
-       mebels {
-         count
-       }
+       id
+       
      }`
    }
    getMutation(){

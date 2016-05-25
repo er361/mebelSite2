@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import AddMebelMutation from '../../../mutations/admin/mebel/AddMebelMutation.jsx';
+
 
 class MebelCreateForm extends React.Component {
   componentDidMount() {
@@ -12,17 +12,9 @@ class MebelCreateForm extends React.Component {
     e.preventDefault();
     let $form = $('.ui.form'),
     allFields = $form.form('get values');
-    console.log(allFields);
-    this.sendForm(allFields);
-  }
 
-  sendForm(data){
-    //add viewer id
-    data.viewer = this.props.viewer;
-
-    Relay.Store.commitUpdate(new AddMebelMutation({
-      ...data
-    }))
+    //console.log(allFields);
+    this.props.onSave(allFields);
   }
   render() {
     const { props: { categories: categories } } = this
@@ -59,10 +51,6 @@ class MebelCreateForm extends React.Component {
 
 export default Relay.createContainer(MebelCreateForm, {
   fragments: {
-    viewer: () => Relay.QL `
-    fragment on Viewer {
-      ${AddMebelMutation.getFragment('viewer')}
-    }`,
     categories: () => Relay.QL`
     fragment on CategoryConnection {
       edges{
