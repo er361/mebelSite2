@@ -1,23 +1,51 @@
 import React from 'react';
 import Relay from 'react-relay';
+import MakeInputTable from './MakeInputTable.jsx';
 
 class MebelUnit extends React.Component {
-  setCategoryId = (id) => {
-    this.props.relay.setVariables ({
-      categoryId: id
+  state = {
+    text: '',
+    isEditing: false
+  }
+  handleClick = (e) => {
+    e.preventDefault();
+  }
+  handleEdit = () => {
+    this.setState({
+      isEditing: true
     })
+  }
+  handleCancel = () => {
+    this.setState({
+      isEditing: false
+    });
+  }
+  makeInput = (data) => {
+    if(this.state.isEditing){
+      return(
+        <MakeInputTable
+          data={data}
+          onCancel={this.handleCancel}/>
+        )
+    } else {
+      return null;
+    }
+  }
+
+  makeCell = (data) => {
+    return(
+      <td onClick={this.handleEdit} className='selectable'>
+        <a onClick={this.handleClick}  href="">{this.state.isEditing ? null : data}</a>
+        {this.makeInput(data)}
+      </td>
+    )
   }
   render() {
     const { props: props, props: { mebel: mebel, viewer: {category: category } } } = this
     props.relay.setVariables({id: mebel.categoryId})
     return (
-      <tr className='center aligned selec'>
-        <td className='selectable' data-content="popass">{mebel.title}</td>
-        <td>{mebel.price}</td>
-        <td>{category.title}</td>
-        <td>{mebel.img}</td>
-        <td><div className="ui button">Удалить</div></td>
-        <td><div className="ui button">Изменить</div></td>
+      <tr>
+        {this.makeCell(mebel.title)}
       </tr>
     );
   }
@@ -35,6 +63,7 @@ export default Relay.createContainer( MebelUnit, {
     `,
     mebel: () => Relay.QL `
     fragment on Mebel {
+      id
       title
       img
       categoryId

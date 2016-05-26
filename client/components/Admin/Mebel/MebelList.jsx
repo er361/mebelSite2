@@ -9,18 +9,13 @@ class MebelList extends React.Component {
     return (
       <table className="ui  blue celled table">
         <thead>
-          <tr>
-            <th>Название</th>
-            <th>Цена</th>
-            <th>Категория</th>
-            <th>Изорбражение</th>
-            <th>Удалить</th>
-            <th>Редактировать</th>
-          </tr>
+            <tr>
+              <th>Название</th>
+            </tr>
         </thead>
         <tbody>
           {mebels.edges.map(edge =>
-          <MebelUnit viewer={props.viewer} key={edge.node.id} mebel={edge.node} />)}
+          <MebelUnit key={edge.node.id} viewer={props.viewer} mebel={edge.node} />)}
         </tbody>
       </table>
     );
