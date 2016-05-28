@@ -1,65 +1,3 @@
-<h1 align="center">
-  <br>
-	<img width="800" src="https://cloud.githubusercontent.com/assets/4281887/14516854/792107ac-0231-11e6-95dd-86bb2b5197e3.png">
-	<br>
-  <br>
-  <br>
-</h1>
-
-[![Dependency Status](https://img.shields.io/david/lvarayut/relay-fullstack.svg)](https://github.com/lvarayut/relay-fullstack)
-[![devDependency Status](https://img.shields.io/david/dev/lvarayut/relay-fullstack.svg)](https://github.com/lvarayut/relay-fullstack)
-> Relay Fullstack is a Relay scaffolding application that aims to help you get up and running a project without worrying about integrating tools. It comes with many modern technologies; Relay, GraphQL, Express, ES6/ES7, JSX, Webpack, Babel, Material Design Lite, and PostCSS. Relay Fullstack is also using [Hot-reload](https://github.com/gaearon/react-transform-hmr) to real time update the screen whenever any code changes.
-
-## Example 
-![Demo](https://cloud.githubusercontent.com/assets/4281887/13377800/9c4705a2-de1d-11e5-82cb-745e16d5b1c4.gif)
-> Check out the [Live demo](http://relay-fullstack.herokuapp.com) on Heroku.
-
-## Usage
-
-Clone the repository to your local directory
-```bash
-$ git clone https://github.com/lvarayut/relay-fullstack.git
-$ cd relay-fullstack
-```
-
-Install all dependencies & Start developing
-```bash
-$ npm install
-$ npm start
-```
-
-Launch your favorite web browser and go to `http://localhost:3000` for Relay application or `http://localhost:8000` for GraphiQL. 
-
-## Deployment
-
-#### Local machine
-In order to deploy a project, it is a good practice to minify all JavaScript files, stop spawning the GraphiQL server, pull off some duplicate dependencies, and remove all unnecessary scripts, for example, Hot-reload. All of these can be done by executing the following command:
-
-```bash
-$ npm run deploy
-```
-
-Again, launch your favorite web browser and go to `http://localhost:3000`.
-
-#### Heroku
-Before getting started, make sure you already installed the [Heroku Toolbelt](https://toolbelt.heroku.com), which is a command-line tooling for managing Heroku applications that makes it easy to deploy an application in a few steps:
-
-```bash
-$ heroku create                     # Create a new Heroku application
-$ git push heroku master            # Push your code into the created Heroku repository
-$ heroku ps:scale web=1             # Run the deployed application
-````
-
-That is it! Now, open the application on your default browser using `heroku open`.
-
-## Schema
-
-Whenever you start a server, it will automatically execute `updateSchema.js` script in order to compile the schema definitions, defined in `schema.js`, to `schema.json` and `schema.graphql`. This is required by Relay framework. However, you could also run the script manually:
-
-```bash
-$ npm run update
-```
-
 ## Project Structure
 
 
@@ -67,24 +5,24 @@ $ npm run update
     │   ├── assets                      - Images and fonts
     │   ├── components                  - Relay containers, React components, and SCSS files used in the components
     │   │   └── variables.scss          - Common SCSS variables
-    │   ├── routes                      - React-router-relay 
+    │   ├── routes                      - React-router-relay
     │   │   ├── Route.js                - All route definitions
     │   │   └── ViewerQuery.js          - Entry node of a GraphQL query
-    │   ├── index.html                  - HTML template file used by html-webpack-plugin 
+    │   ├── index.html                  - HTML template file used by html-webpack-plugin
     │   └── index.js                    - Client entry point
     ├── server                          - All of the server side code resides in this folder
-    │   ├── config                      - Configuration 
+    │   ├── config                      - Configuration
     │   │   └── environment             - Separate configuration for each environment
     │   │       ├── development.js      - Development configuration
     │   │       ├── index.js            - Common configuration used in any environment
     │   │       ├── production.js       - Production configuration
     │   │       └── test.js             - Test configuration
-    │   ├── data                        - Data and APIs 
+    │   ├── data                        - Data and APIs
     │   │   ├── database.js             - Mock up database which should be replaced with your real database logic
     │   │   ├── schema.graphql          - Compiled schema in a readable form
     │   │   ├── schema.js               - Schema definitions
-    │   │   └── schema.json             - Compiled schema to be used by Relay 
-    │   ├── utils                       - Utilities 
+    │   │   └── schema.json             - Compiled schema to be used by Relay
+    │   ├── utils                       - Utilities
     │   │   ├── babelRelayPlugin.js     - Babel-relay-plugin provided by Relay
     │   │   └── updateSchema.js         - Code for compiling the defined schema to schema.json and schema.graphql
     │   └── index.js                    - Server entry point
@@ -103,7 +41,7 @@ $ npm run update
 
 [Express](http://expressjs.com/) - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
-### Module bundler & Syntax transformers 
+### Module bundler & Syntax transformers
 [Webpack](https://webpack.github.io) - Webpack is a module bundler that takes modules with dependencies and generates static assets representing those modules.
 
 [Babel](https://babeljs.io) - Babel is a JavaScript compiler which allows you to  use next generation, ES6/ES7, JavaScript, today.
