@@ -52,7 +52,7 @@
 [JSX]( https://facebook.github.io/react/docs/jsx-in-depth.html) - JSX is a JavaScript syntax extension that looks similar to XML. You can use a simple JSX syntactic transform with React.
 
 ### Designs
-[Material Design Lite](http://getmdl.io) - Material Design Lite lets you add a Material Design look and feel to your websites.
+[Semantic UI ](http://semantic-ui.com) - Material Design Lite lets you add a Material Design look and feel to your websites.
 
 [PostCSS](http://postcss.org) - PostCSS is a tool for transforming CSS with JavaScript. It has roughly 200 plugins to help you write CSS easier.
 
@@ -69,16 +69,6 @@
 
 [Nodemon](http://nodemon.io) - Monitor for any changes in your node.js application and automatically restart the server.
 
-## Credits
-- Relay Fullstack is inspired by [relay-starter-kit](https://github.com/relayjs/relay-starter-kit). Please take a look at the original code to learn more.
-- Handcrafted with ♥ by Varayut Lerdkanlayanawat.
-
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [![lvarayut](https://avatars.githubusercontent.com/u/4281887?v=3&s=120)<br /><sub>lvarayut</sub>](https://github.com/lvarayut)<br /> | [![ianaya89](https://avatars.githubusercontent.com/u/3258966?v=3&s=120)<br /><sub>ianaya89</sub>](https://github.com/ianaya89)<br /> | [![kennydee](https://avatars.githubusercontent.com/u/1484406?v=3&s=120)<br /><sub>kennydee</sub>](https://github.com/kennydee)<br /> | [![jg123](https://avatars.githubusercontent.com/u/693277?v=3&s=120)<br /><sub>jg123</sub>](https://github.com/jg123)<br /> |
-| :---: | :---: | :---: | :---: |
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
